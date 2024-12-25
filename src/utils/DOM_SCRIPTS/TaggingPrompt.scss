@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+
+#tagging_prompt,
+#tagging_prompt * {
+  all: revert !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#tagging_prompt {
+  min-height: 256px !important;
+  width: 320px !important;
+  background: #2087ff !important;
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  border-radius: 8px !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+
+  &__title {
+    display: flex !important;
+    gap: 7px !important;
+    margin-top: 16px !important;
+
+    &__logo {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+
+      & img {
+        width: 20px !important;
+        aspect-ratio: 1 !important;
+      }
+    }
+
+    &__text {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      & h1 {
+        font-family: "Funnel Display", serif !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        line-height: 19px !important;
+        letter-spacing: 0em !important;
+        padding: 0 !important;
+        color: #0052bd !important;
+      }
+    }
+  }
+
+  &__line {
+    margin-top: 24px !important;
+    width: 525px !important;
+    padding: 0 16px !important;
+    text-align: center !important;
+    font-family: "Funnel Display", serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 24px !important;
+    letter-spacing: 0em !important;
+    color: #ffffff !important;
+  }
+
+  &__message {
+    font-family: "Funnel Display", serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+    letter-spacing: 0em !important;
+    text-align: center !important;
+    margin-top: 8px !important;
+    color: #ffffff !important;
+    padding: 0 16px !important;
+
+    .highlight {
+      font-weight: 600 !important;
+    }
+  }
+
+  &__buttons {
+    display: flex !important;
+    gap: 8px !important;
+    margin: 16px 0 !important;
+
+    button {
+      padding: 6px 24px !important;
+      border-radius: 38px !important;
+      border: none !important;
+      cursor: pointer !important;
+      font-family: "Funnel Display", serif !important;
+      font-size: 12px !important;
+      font-weight: 400 !important;
+      line-height: 19px !important;
+      letter-spacing: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    #tagging_prompt__tag_button {
+      background: #ffffff !important;
+      color: black !important;
+    }
+
+    #tagging_prompt__dismiss_button {
+      background: transparent !important;
+      color: #ffffff !important;
+      border: 1px solid #ffffff !important;
+    }
+  }
+}
