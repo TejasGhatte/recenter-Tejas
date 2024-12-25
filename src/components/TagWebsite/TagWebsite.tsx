@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DropdownOptions } from "../../types/DropdownOptions";
 import Button from "../Button/Button";
 import Dropdown from "../Dropdown/Dropdown";
@@ -30,6 +30,15 @@ export default function TagWebsite() {
 
   const [website, setWebsite] = useState<string>("");
   const [maxTime, setMaxTime] = useState<string>("");
+
+  useEffect(() => {
+    // Get the current tab's URL
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs[0].url) {
+        setWebsite(tabs[0].url);
+      }
+    });
+  }, []);
 
   const handleActiveOption = (option: DropdownOptions) => {
     setActiveOption(option);
