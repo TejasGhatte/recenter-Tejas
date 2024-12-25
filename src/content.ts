@@ -3,11 +3,13 @@ import { insertHourlySummary } from "./utils/DOM_SCRIPTS/HourlySummary";
 import { NudgeUser } from "./utils/main/NudgeUser";
 import { ProactiveTimer } from "./utils/main/ProactiveTimer";
 import { getTag } from "./utils/queryStorage/GetTag";
+import { UntaggedNudge } from "./utils/main/UntaggedNudge";
 
 var isExtensionDisabled = false;
 var isExtensionDisabledOnWeekend: boolean = true;
 var isWeekend: boolean = [0, 6].includes(new Date().getDay());
 var nudgeUser: NudgeUser;
+var untaggedNudge: UntaggedNudge;
 
 function checkDisable(): boolean {
   return isExtensionDisabled || isExtensionDisabledOnWeekend;
@@ -54,6 +56,9 @@ async function setIsDisabled() {
           }
         }
       }
+      if (!untaggedNudge && !checkDisable()) {
+        untaggedNudge = new UntaggedNudge(); // Initialize the UntaggedNudge instance
+      }
       if (changes["isDisabledOnWeekend"]) {
         isExtensionDisabledOnWeekend =
           changes["isDisabledOnWeekend"].newValue && isWeekend;
@@ -65,6 +70,7 @@ async function setIsDisabled() {
 setIsDisabled();
 
 nudgeUser = new NudgeUser(checkDisable());
+untaggedNudge = new UntaggedNudge();
 
 chrome.storage.local.get("lastGreeted", (data) => {
   if (checkDisable()) {
